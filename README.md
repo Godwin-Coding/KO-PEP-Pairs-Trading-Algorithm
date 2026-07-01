@@ -43,6 +43,9 @@ KO and PEP sell similar products to similar consumers, face similar input costs,
 
 Each of these is discussed in depth in the notebook, along with a concrete proposed implementation for addressing it.
 
+## Key Takeaway:
+- Alpha decay on well-known pairs makes naive implementations non-viable; a rolling hedge ratio, walk-forward validation, and basket diversification are the natural next steps.
+
 ## Tech Stack
 
 - `yfinance` — data sourcing
