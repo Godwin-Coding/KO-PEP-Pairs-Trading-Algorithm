@@ -2,7 +2,7 @@
 
 A statistical arbitrage project exploring whether Coca-Cola (KO) and PepsiCo (PEP) stock prices share a stable, mean-reverting relationship that can be exploited via a cointegration-based pairs trading strategy.
 
-This project was built as a self-directed learning exercise to understand the full pipeline of quantitative pairs trading — from data sourcing and statistical validation, to strategy construction and honest backtesting.
+This project was built as a self-directed learning exercise to understand the full pipeline of quantitative pairs trading, from data sourcing and statistical validation, to strategy construction and honest backtesting.
 
 ## Summary of Results
 
@@ -10,11 +10,11 @@ This project was built as a self-directed learning exercise to understand the fu
 |---|---|
 | Cointegration p-value (Engle-Granger) | 0.0095 |
 | Hedge ratio (OLS) | 3.3157 |
-| Sharpe Ratio | 0.11 |
-| Max Drawdown | -66.7% |
+| Sharpe Ratio | 0.1372 |
+| Max Drawdown | -66.74% |
 | CAGR | 2.74% |
 
-**Key finding:** despite KO and PEP being statistically cointegrated (p = 0.0095), the resulting strategy underperformed simply holding cash (risk-free rate ~4-5%) and carried a severe drawdown during the 2020 COVID crash. This is a deliberately honest result — the full writeup explains why, including the likelihood of **alpha decay** on a heavily-arbitraged, textbook pair, and several concrete methodological limitations.
+**Key finding:** despite KO and PEP being statistically cointegrated (p = 0.0095), the resulting strategy underperformed simply holding cash (risk-free rate ~4-5%) and carried a severe drawdown during the 2020 COVID crash. This is a deliberately honest result. The full writeup explains why, including the likelihood of **alpha decay** on a heavily-arbitraged, textbook pair and several concrete methodological limitations.
 
 ## Hypothesis
 
@@ -22,15 +22,14 @@ KO and PEP sell similar products to similar consumers, face similar input costs,
 
 ## Methodology
 
-1. **Data sourcing** — 9 years (2015–2024) of daily closing prices via `yfinance`
-2. **Data cleaning** — missing value handling, minimum history requirement, date synchronisation checks, outlier detection with manual investigation of flagged dates, and a stationarity sanity check (ADF test) on returns
-3. **Cointegration testing** — Engle-Granger test to confirm a statistically valid long-run equilibrium relationship
-4. **Hedge ratio estimation** — OLS regression to determine the dollar-neutral weighting between the two stocks
-5. **Spread construction** — computing and visualising the regression residuals (the tradeable spread)
-6. **Signal generation** — rolling z-score of the spread, with entry/exit thresholds
-7. **Backtesting** — lookahead-bias-free simulation using lagged positions against realised returns
-8. **Performance evaluation** — Sharpe ratio, max drawdown, CAGR
-9. **Critical reflection** — explicit documentation of limitations and concrete improvements
+1. **Data sourcing**: 9 years (2015–2024) of daily closing prices via `yfinance`
+2. **Data cleaning**: missing value handling, minimum history requirement, date synchronisation checks, outlier detection with manual investigation of flagged dates, and a stationarity sanity check (ADF test) on returns
+3. **Cointegration testing**: Engle-Granger test to confirm a statistically valid long-run equilibrium relationship
+4. **Hedge ratio estimation**: OLS regression to determine the dollar-neutral weighting between the two stocks
+5. **Spread construction**: computing and visualising the regression residuals (the tradeable spread)
+6. **Signal generation**: rolling z-score of the spread, with entry/exit thresholds
+7. **Backtesting & Performance evaluation**: lookahead-bias-free simulation using lagged positions against realised returns, Sharpe ratio, max drawdown, CAGR calculations
+8. **Critical reflection**: explicit documentation of limitations and concrete improvements
 
 ## Key Limitations (detailed in notebook)
 
@@ -54,10 +53,9 @@ Each of these is discussed in depth in the notebook, along with a concrete propo
 ## Repository Structure
 
 ```
-├── main.ipynb      # Full annotated notebook: methodology, code, and analysis
-├── no_notes.py     # Clean implementation without annotations, for quick reference
 ├── README.md
-└── LICENSE
+├── main.ipynb      # Full annotated notebook: methodology, code, and analysis
+└── no_notes.py     # Clean implementation without annotations, for quick reference
 ```
 
 ## Running This Project
@@ -81,8 +79,8 @@ python no_notes.py
 
 ## License & Usage
 
-This project is shared publicly for portfolio and educational purposes. See [LICENSE](./LICENSE) for usage terms. If you reference or build on this work, please credit the original author.
+This project is shared publicly for portfolio and educational purposes. All rights reserved — please do not redistribute as your own work.
 
 ---
 
-*Built by Godwin as an independent learning project to understand statistical arbitrage and cointegration-based trading strategies.*
+*Built by Godwin Oh as an independent learning project to understand statistical arbitrage and cointegration-based trading strategies.*
